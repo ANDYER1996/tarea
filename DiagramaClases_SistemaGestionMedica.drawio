@@ -1,0 +1,106 @@
+<mxfile host="Electron" agent="Mozilla/5.0">
+  <diagram id="uml-sistema-medico" name="Diagrama de Clases">
+    <mxGraphModel dx="1147" dy="716" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pkgEntidad" parent="1" style="swimlane;fontStyle=1;horizontal=1;startSize=28;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;" value="entidad" vertex="1">
+          <mxGeometry height="500" width="920" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Paciente" parent="pkgEntidad" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=13;" value="&lt;b&gt;Paciente&lt;/b&gt;&lt;hr&gt;− id : String&lt;br&gt;− dni : String&lt;br&gt;− nombre : String&lt;br&gt;− telefono : String&lt;hr&gt;+ get/set...()&lt;br&gt;+ toString() : String" vertex="1">
+          <mxGeometry height="190" width="250" x="30" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Medico" parent="pkgEntidad" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=13;" value="&lt;b&gt;Medico&lt;/b&gt;&lt;hr&gt;− id : String&lt;br&gt;− cmp : String&lt;br&gt;− nombre : String&lt;br&gt;− especialidad : Especialidad&lt;hr&gt;+ get/set...()&lt;br&gt;+ toString() : String" vertex="1">
+          <mxGeometry height="190" width="250" x="330" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Especialidad" parent="pkgEntidad" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=13;" value="&lt;b&gt;Especialidad&lt;/b&gt;&lt;hr&gt;− id : String&lt;br&gt;− nombre : String&lt;br&gt;− descripcion : String&lt;hr&gt;+ get/set...()&lt;br&gt;+ toString() : String" vertex="1">
+          <mxGeometry height="170" width="250" x="630" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Cita" parent="pkgEntidad" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=13;" value="&lt;b&gt;Cita&lt;/b&gt;&lt;hr&gt;− id : String&lt;br&gt;− fecha : String&lt;br&gt;− hora : String&lt;br&gt;− paciente : Paciente&lt;br&gt;− medico : Medico&lt;br&gt;− estado : String&lt;hr&gt;+ get/set...()" vertex="1">
+          <mxGeometry height="210" width="250" x="30" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="Receta" parent="pkgEntidad" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=13;" value="&lt;b&gt;Receta&lt;/b&gt;&lt;hr&gt;− id : String&lt;br&gt;− paciente : Paciente&lt;br&gt;− medicamento : String&lt;br&gt;− indicaciones : String&lt;hr&gt;+ get/set...()" vertex="1">
+          <mxGeometry height="190" width="250" x="330" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="HistorialMedico" parent="pkgEntidad" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=13;" value="&lt;b&gt;HistorialMedico&lt;/b&gt;&lt;hr&gt;− id : String&lt;br&gt;− paciente : Paciente&lt;br&gt;− diagnostico : String&lt;br&gt;− alergias : String&lt;br&gt;− fecha : String&lt;hr&gt;+ get/set...()" vertex="1">
+          <mxGeometry height="200" width="250" x="630" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="relMedEsp" edge="1" parent="1" source="Medico" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=none;html=1;fontSize=12;" target="Especialidad" value="1 : 1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="relCitaPac" edge="1" parent="1" source="Cita" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=none;html=1;fontSize=12;" target="Paciente" value="paciente 1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="relCitaMed" edge="1" parent="1" source="Cita" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=none;html=1;fontSize=12;" target="Medico" value="medico 1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="relRecPac" edge="1" parent="1" source="Receta" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=none;html=1;fontSize=12;" target="Paciente" value="paciente 1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="relHistPac" edge="1" parent="1" source="HistorialMedico" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;endArrow=none;html=1;fontSize=12;" target="Paciente" value="paciente 1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pkgDatos" parent="1" style="swimlane;fontStyle=1;horizontal=1;startSize=28;rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;" value="datos" vertex="1">
+          <mxGeometry height="270" width="500" x="1000" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DatosSistema" parent="pkgDatos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=13;" value="&lt;b&gt;DatosSistema&lt;/b&gt;&lt;hr&gt;+ pacientes : List&lt;Paciente&gt;&lt;br&gt;+ medicos : List&lt;Medico&gt;&lt;br&gt;+ especialidades : List&lt;Especialidad&gt;&lt;br&gt;+ citas : List&lt;Cita&gt;&lt;br&gt;+ recetas : List&lt;Receta&gt;&lt;br&gt;+ historiales : List&lt;HistorialMedico&gt;&lt;hr&gt;+ inicializarDatos()" vertex="1">
+          <mxGeometry height="185" width="430" x="35" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="pkgGui" parent="1" style="swimlane;fontStyle=1;horizontal=1;startSize=28;rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="gui" vertex="1">
+          <mxGeometry height="500" width="500" x="1000" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="FrmPrincipal" parent="pkgGui" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6b656;fontSize=13;" value="&lt;b&gt;FrmPrincipal&lt;/b&gt;&lt;hr&gt;Ventana principal&lt;br&gt;JDesktopPane&lt;br&gt;Menús y dashboard&lt;hr&gt;+ abrir...()" vertex="1">
+          <mxGeometry height="120" width="210" x="25" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FormPaciente" parent="pkgGui" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6b656;fontSize=13;" value="&lt;b&gt;FormPaciente&lt;/b&gt;&lt;br&gt;CRUD / búsqueda de pacientes" vertex="1">
+          <mxGeometry height="85" width="210" x="265" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="FormMedico" parent="pkgGui" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6b656;fontSize=13;" value="&lt;b&gt;FormMedico&lt;/b&gt;&lt;br&gt;CRUD / búsqueda de médicos" vertex="1">
+          <mxGeometry height="85" width="210" x="25" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="FormEspecialidad" parent="pkgGui" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6b656;fontSize=13;" value="&lt;b&gt;FormEspecialidad&lt;/b&gt;&lt;br&gt;Registro de especialidades" vertex="1">
+          <mxGeometry height="85" width="210" x="265" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="FormCita" parent="pkgGui" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6b656;fontSize=13;" value="&lt;b&gt;FormCita&lt;/b&gt;&lt;br&gt;Registro y consulta de citas" vertex="1">
+          <mxGeometry height="85" width="210" x="25" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="FormReceta" parent="pkgGui" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6b656;fontSize=13;" value="&lt;b&gt;FormReceta&lt;/b&gt;&lt;br&gt;Emisión y consulta de recetas" vertex="1">
+          <mxGeometry height="85" width="210" x="265" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="FormHistorial" parent="pkgGui" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6b656;fontSize=13;" value="&lt;b&gt;FormHistorial&lt;/b&gt;&lt;br&gt;Registro y consulta de historial" vertex="1">
+          <mxGeometry height="85" width="210" x="25" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="FormReportes" parent="pkgGui" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6b656;fontSize=13;" value="&lt;b&gt;FormReportes&lt;/b&gt;&lt;br&gt;Reportes de pacientes, historial y citas" vertex="1">
+          <mxGeometry height="85" width="210" x="265" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="depPrincipalDatos" edge="1" parent="1" source="FrmPrincipal" style="dashed=1;endArrow=open;html=1;strokeWidth=1;" target="DatosSistema" value="usa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="depFormsDatos" edge="1" parent="1" source="FormPaciente" style="dashed=1;endArrow=open;html=1;strokeWidth=1;" target="DatosSistema" value="accede a datos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="depMedDatos" edge="1" parent="1" source="FormMedico" style="dashed=1;endArrow=open;html=1;strokeWidth=1;" target="DatosSistema" value="accede a datos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="depEspDatos" edge="1" parent="1" source="FormEspecialidad" style="dashed=1;endArrow=open;html=1;strokeWidth=1;" target="DatosSistema" value="accede a datos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="depCitaDatos" edge="1" parent="1" source="FormCita" style="dashed=1;endArrow=open;html=1;strokeWidth=1;" target="DatosSistema" value="accede a datos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="depRecDatos" edge="1" parent="1" source="FormReceta" style="dashed=1;endArrow=open;html=1;strokeWidth=1;" target="DatosSistema" value="accede a datos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="depHistDatos" edge="1" parent="1" source="FormHistorial" style="dashed=1;endArrow=open;html=1;strokeWidth=1;" target="DatosSistema" value="accede a datos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="depRepDatos" edge="1" parent="1" source="FormReportes" style="dashed=1;endArrow=open;html=1;strokeWidth=1;" target="DatosSistema" value="genera reportes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;" value="&lt;b&gt;Leyenda&lt;/b&gt;&lt;br&gt;Línea continua = relación entre entidades&lt;br&gt;Línea discontinua = dependencia/uso&lt;br&gt;Proyecto Java Swing organizado por paquetes" vertex="1">
+          <mxGeometry height="100" width="920" x="40" y="590" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
